@@ -17,7 +17,20 @@
         Home
       </v-tab>
       <v-tab to='transaction-log'>
+        <v-icon>mdi-paper-roll-outline</v-icon>
         Transaction Log
+      </v-tab>
+       <v-tab to='fuelstock'>
+         <v-icon>mdi-tanker-truck</v-icon>
+        Fuel Stock
+      </v-tab>
+       <v-tab to='pumptransaction'>
+         <v-icon>mdi-gas-station</v-icon>
+        Pump Transaction
+      </v-tab>
+       <v-tab to='profile'>
+         <v-icon>mdi-account-circle</v-icon>
+        Profile
       </v-tab>
     </v-tabs>
   </v-card>
