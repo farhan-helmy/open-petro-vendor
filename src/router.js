@@ -5,7 +5,8 @@ import Home from '@/views/Home'
 import Transaction from '@/views/Transaction'
 import Fuelstock from '@/views/Fuelstock'
 import Profile from '@/views/Profile'
-import Pumptransaction from '@/views/Pump'
+import Users from '@/views/Users'
+import Graph from '@/views/Graph'
 
 Vue.use(Router)
 
@@ -37,9 +38,14 @@ let router = new Router({
         component: Profile
     },
     {
-        path: '/pumptransaction',
-        name: 'pumptransaction',
-        component: Pumptransaction
+        path: '/userlists',
+        name: 'userlists',
+        component: Users
+    },
+    {
+        path: '/graph',
+        name: 'graph',
+        component: Graph
     }
 ]
 })

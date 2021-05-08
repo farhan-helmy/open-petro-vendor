@@ -10,10 +10,13 @@
   "dependencies": {
     "@dangvanthanh/vue-clock": "^0.2.1",
     "axios": "^0.20.0-0",
+    "chart.js": "^2.9.4",
     "core-js": "^3.6.5",
     "vee-validate": "^3.4.5",
     "vue": "^2.6.11",
+    "vue-chartjs": "^3.5.1",
     "vue-gauge": "^1.0.3",
+    "vue-graph": "^0.8.7",
     "vue-router": "^3.5.1",
     "vue-speedometer": "^1.8.0",
     "vuetify": "^2.4.0",

@@ -24,9 +24,13 @@
          <v-icon>mdi-tanker-truck</v-icon>
         Fuel Stock
       </v-tab>
-       <v-tab to='pumptransaction'>
+       <v-tab to='userlists'>
          <v-icon>mdi-gas-station</v-icon>
-        Pump Transaction
+        User Lists
+      </v-tab>
+       <v-tab to='graph'>
+         <v-icon>mdi-chart-areaspline</v-icon>
+        Graph
       </v-tab>
        <v-tab to='profile'>
          <v-icon>mdi-account-circle</v-icon>
