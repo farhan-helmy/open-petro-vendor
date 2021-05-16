@@ -7,7 +7,8 @@
       :server-items-length="totalDesserts"
       :loading="loading"
       class="elevation-1"
-    ></v-data-table>
+    >
+    </v-data-table>
   </div>
 </template>
 
@@ -28,10 +29,9 @@ export default {
           sortable: true,
           value: "createdAt",
         },
-        { text: "Name", value: "name" },
-        { text: "Email", value: "email" },
-        { text: "IC number", value: "icno" },
-        { text: "Topup Balance", value: "topup_balance" },
+        { text: "Location", value: "location" },
+        { text: "Name", value: "customer.name" },
+        { text: "Risk", value: "risk" },
       ],
     };
   },
@@ -62,7 +62,7 @@ export default {
       return new Promise((resolve, reject) => {
         const { sortBy, sortDesc, page, itemsPerPage } = this.options;
         axios
-          .get("https://api.openpetro.me/customers")
+          .get("http://192.168.0.139:3000/covid/all")
           .then((resp) => {
             let items = resp.data;
             const total = items.length;

@@ -20,21 +20,26 @@
         <v-icon>mdi-paper-roll-outline</v-icon>
         Transaction Log
       </v-tab>
-       <v-tab to='fuelstock'>
-         <v-icon>mdi-tanker-truck</v-icon>
-        Fuel Stock
-      </v-tab>
        <v-tab to='userlists'>
          <v-icon>mdi-gas-station</v-icon>
         User Lists
       </v-tab>
        <v-tab to='graph'>
          <v-icon>mdi-chart-areaspline</v-icon>
-        Graph
+        Revenue
+      </v-tab>
+       <v-tab to='feedback'>
+         <v-icon>mdi-airplane-takeoff</v-icon>
+         Feedback
+      </v-tab>
+       <v-tab to='covid19'>
+         <v-icon>mdi-virus-outline</v-icon>
+         Covid19
       </v-tab>
        <v-tab to='profile'>
          <v-icon>mdi-account-circle</v-icon>
         Profile
+        
       </v-tab>
     </v-tabs>
   </v-card>

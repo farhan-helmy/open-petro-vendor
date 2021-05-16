@@ -7,6 +7,8 @@ import Fuelstock from '@/views/Fuelstock'
 import Profile from '@/views/Profile'
 import Users from '@/views/Users'
 import Graph from '@/views/Graph'
+import Feedback from '@/views/Feedback'
+import Covid19 from '@/views/Covid19'
 
 Vue.use(Router)
 
@@ -46,6 +48,16 @@ let router = new Router({
         path: '/graph',
         name: 'graph',
         component: Graph
+    },
+    {
+        path: '/feedback',
+        name: 'feedback',
+        component: Feedback
+    },
+    {
+        path: '/covid19',
+        name: 'covid19',
+        component: Covid19
     }
 ]
 })

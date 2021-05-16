@@ -29,7 +29,8 @@ import axios from 'axios'
             value: 'createdAt',
           },
           { text: 'Price (RM)', value: 'price' },
-          { text: 'Fuel Type', value: 'fuel_type', sortable: false }
+          { text: 'Fuel Type', value: 'fuel_type', sortable: false },
+          { text: 'User', value: 'customer.email', sortable: false }
         ],
       }
     },
@@ -59,7 +60,7 @@ import axios from 'axios'
       fakeApiCall () {
         return new Promise((resolve, reject) => {
           const { sortBy, sortDesc, page, itemsPerPage } = this.options
-          axios.get('http://localhost:3000/transactions/all')
+          axios.get('https://api.openpetro.me/transactions/all')
           .then(resp => {
             let items = resp.data
             const total = items.length

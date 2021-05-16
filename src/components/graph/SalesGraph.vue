@@ -15,7 +15,7 @@
 
     <div class="row mt-5 mb-5">
       <div class="col">
-        <h2 class="text-center">RON97</h2>
+        <h2 class="text-center">RON97 Sales</h2>
         <line-chart
           v-if="hargaminyak97.length > 0"
           :chartData="hargaminyak97"
@@ -27,7 +27,7 @@
     </div>
       <div class="row mt-5 mb-5">
       <div class="col">
-        <h2 class="text-center">RON95</h2>
+        <h2 class="text-center">RON95 sales</h2>
         <line-chart
           v-if="hargaminyak95.length > 0"
           :chartData="hargaminyak95"
@@ -51,7 +51,7 @@ export default {
   data: () => ({
     value: [],
     hargaminyak97: [],
-     hargaminyak95: [],
+    hargaminyak95: [],
     chartOptions: {
       responsive: true,
       maintainAspectRatio: false,
@@ -77,13 +77,14 @@ export default {
   }),
   mounted() {
     this.apiCall();
-     this.apiCallFuelPrice();
+     this.apiCall95();
+     this.apiCall97();
   },
   methods: {
     apiCall() {
       return new Promise((resolve, reject) => {
         axios({
-          url: "http://localhost:3000/transactions/all",
+          url: "https://api.openpetro.me/transactions/all",
           method: "GET",
         })
           .then((resp) => {
@@ -104,10 +105,10 @@ export default {
           });
       });
     },
-    apiCallFuelPrice() {
+     apiCall95() {
       return new Promise((resolve, reject) => {
         axios({
-          url: "http://hargaminyak.test/hargaminyak",
+          url: "https://api.openpetro.me/transactions/ron95",
           method: "GET",
         })
           .then((resp) => {
@@ -116,12 +117,33 @@ export default {
             var list = resp.data.length;
             for (var i = 0; i < list; i++) {
               var counter = resp.data[i];
-              var price97 = counter.ron97.replace("RM", "");
-              var price95 = counter.ron95.replace("RM", "");
-              console.log("price 97:" + price97)
-              var date = counter.start_date;
-              this.hargaminyak97.push({ date, total: price97 });
-              this.hargaminyak95.push({ date, total: price95 });
+              var price = counter.price;
+              var date = counter.createdAt;
+              this.hargaminyak95.push({ date, total: price });
+            }
+            resolve(resp);
+          })
+          .catch((err) => {
+            console.log(err.body);
+            reject(err);
+          });
+      });
+    },
+     apiCall97() {
+      return new Promise((resolve, reject) => {
+        axios({
+          url: "https://api.openpetro.me/transactions/ron97",
+          method: "GET",
+        })
+          .then((resp) => {
+            console.log(resp.data.length);
+            console.log(resp.data);
+            var list = resp.data.length;
+            for (var i = 0; i < list; i++) {
+              var counter = resp.data[i];
+              var price = counter.price;
+              var date = counter.createdAt;
+              this.hargaminyak97.push({ date, total: price });
             }
             resolve(resp);
           })
