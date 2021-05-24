@@ -1,6 +1,21 @@
 <template>
   <div>
-    <div class="row mt-5 mb-5">
+    <div class="text-center">
+      <v-menu bottom origin="center center" transition="scale-transition">
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn color="secondary" dark v-bind="attrs" v-on="on">
+            Choose Graph
+          </v-btn>
+        </template>
+
+        <v-list>
+          <v-list-item v-for="(item, i) in items" :key="i" link @click="actionClick(item.action)">
+            <v-list-item-action>{{ item.title }}</v-list-item-action>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+    </div>
+    <div class="row mt-5 mb-5" v-if="salesgraph">
       <div class="col">
         <h2 class="text-center">Sales</h2>
         <line-chart
@@ -13,7 +28,7 @@
       </div>
     </div>
 
-    <div class="row mt-5 mb-5">
+    <div class="row mt-5 mb-5" v-if="ron97">
       <div class="col">
         <h2 class="text-center">RON97 Sales</h2>
         <line-chart
@@ -25,7 +40,7 @@
         />
       </div>
     </div>
-      <div class="row mt-5 mb-5">
+    <div class="row mt-5 mb-5" v-if="ron95">
       <div class="col">
         <h2 class="text-center">RON95 sales</h2>
         <line-chart
@@ -49,6 +64,9 @@ export default {
     LineChart,
   },
   data: () => ({
+    salesgraph: false,
+    ron95: false,
+    ron97: false,
     value: [],
     hargaminyak97: [],
     hargaminyak95: [],
@@ -74,13 +92,29 @@ export default {
       pointBackgroundColor: "#AFD6AC",
       backgroundColor: "#FFFF00",
     },
+    items: [
+      { title: "Overall Sales Graph", action: "salesgraph" },
+      { title: "RON97 Sales", action: "ron97" },
+      { title: "RON95 Sales", action: "ron95" },
+
+    ],
   }),
   mounted() {
     this.apiCall();
-     this.apiCall95();
-     this.apiCall97();
+    this.apiCall95();
+    this.apiCall97();
   },
   methods: {
+    actionClick(action){
+      if (action === "salesgraph"){
+        console.log('test')
+        this.salesgraph = !this.salesgraph
+      }else if(action === "ron97"){
+        this.ron97 = !this.ron97
+      }else if(action === "ron95"){
+        this.ron95 = !this.ron95
+      }
+    },
     apiCall() {
       return new Promise((resolve, reject) => {
         axios({
@@ -105,7 +139,7 @@ export default {
           });
       });
     },
-     apiCall95() {
+    apiCall95() {
       return new Promise((resolve, reject) => {
         axios({
           url: "https://api.openpetro.me/transactions/ron95",
@@ -129,7 +163,7 @@ export default {
           });
       });
     },
-     apiCall97() {
+    apiCall97() {
       return new Promise((resolve, reject) => {
         axios({
           url: "https://api.openpetro.me/transactions/ron97",

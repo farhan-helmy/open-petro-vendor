@@ -62,7 +62,7 @@ export default {
       return new Promise((resolve, reject) => {
         const { sortBy, sortDesc, page, itemsPerPage } = this.options;
         axios
-          .get("http://192.168.0.139:3000/covid/all")
+          .get("https://api.openpetro.me/covid/all")
           .then((resp) => {
             let items = resp.data;
             const total = items.length;

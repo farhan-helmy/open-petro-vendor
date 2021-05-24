@@ -49,7 +49,7 @@ export default {
       console.log(utc);
       return new Promise((resolve, reject) => {
         axios({
-          url: "http://hargaminyak.test/hargaminyak/" + utc,
+          url: "https://openpetro.me/hargaminyak/" + utc,
           method: "GET",
         })
           .then((resp) => {
